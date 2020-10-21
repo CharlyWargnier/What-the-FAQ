@@ -1,3 +1,9 @@
+
+st.beta_set_page_config(
+page_title="What The Faq?",
+page_icon="🧊")
+
+	
 import os
 import base64
 
