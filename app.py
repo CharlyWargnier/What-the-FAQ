@@ -71,7 +71,7 @@ st.markdown('## **① Paste a URL **') #########
 URLBox = st.text_input('')
 
 if not URLBox:
-  st.warning('Please add a valid URL ☝️')
+  st.success('Please paste a URL in the field above ☝️')
   st.stop()
 
 selector = "p"
@@ -86,7 +86,7 @@ except:
 
 lenText = len(text)
 
-if lenText < 10:
+if lenText < 200:
   st.warning('⚠️ The text we extracted is ' + str(len(text)) + ' characters long. Most of the content is probably rendered client-side, which is not supported at the moment.')
   st.stop()
 	
