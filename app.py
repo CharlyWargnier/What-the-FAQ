@@ -1,9 +1,9 @@
 import os
 import base64
 
-#import nltk
+import nltk
 #nltk.download('popular')
-
+nltk.download('punkt')
 
 import streamlit as st
 from pipelines import pipeline
