@@ -12,8 +12,9 @@ from requests_html import HTMLSession
 session = HTMLSession()
 
 st.beta_set_page_config(
-page_title="What The Faq?",
-page_icon="🧊")
+page_title="What The Faq?")
+
+#page_icon="🧊"
 
 #region Layout size ####################################################################################
 
