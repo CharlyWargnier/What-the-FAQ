@@ -1,8 +1,8 @@
 import os
 import base64
 
-import nltk
-nltk.download('popular')
+#import nltk
+#nltk.download('popular')
 
 
 import streamlit as st
