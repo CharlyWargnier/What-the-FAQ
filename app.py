@@ -43,7 +43,6 @@ c30, c31, c32 = st.beta_columns(3)
 with c30:
   st.image('WhatTheFaq.png', width = 420 )
 
-
 with c32:
   #st.image('streamEASmaller2.jpg', width = 275 )
   #st.markdown("---")
@@ -87,6 +86,10 @@ except:
 
 lenText = len(text)
 
+if lenText < 10:
+  st.warning('⚠️ The text we extracted is ' + str(len(text)) + ' characters long. Most of the content is probably rendered client-side, which is not supported at the moment.')
+  st.stop()
+	
 if lenText > 30000:
   st.warning('⚠️ The extracted text is ' + str(len(text)) + " characters, that's " + str(len(text)- 30000) + " characters above the 30K limit! Stay tuned as we may increase that limit soon! 😉")
   st.stop()
@@ -95,7 +98,6 @@ else:
   with st.beta_expander("Toggle to check extracted text ⯈", expanded=False):
     st.warning("Extracted text is " + str(len(text)) + " characters long")
     st.write(text)
-
 
 ####################################
 
