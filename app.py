@@ -2,7 +2,7 @@ import os
 import base64
 
 import nltk
-nltk.download('popular')
+nltk.download('punkt')
 
 import pandas as pd
 import streamlit as st
