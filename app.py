@@ -6,9 +6,9 @@ nltk.download('popular')
 
 import pandas as pd
 import streamlit as st
-from pyinstrument import Profiler
-from ansi2html import Ansi2HTMLConverter
-import streamlit.components.v1 as components
+#from pyinstrument import Profiler
+#from ansi2html import Ansi2HTMLConverter
+#import streamlit.components.v1 as components
 
 
 import streamlit as st
@@ -17,8 +17,8 @@ from requests_html import HTMLSession
 session = HTMLSession()
 
 
-profiler = Profiler()
-profiler.start()
+#profiler = Profiler()
+#profiler.start()
 
 ####################################################################################
 
@@ -645,8 +645,8 @@ profiler.stop()
 values = st.slider('Select a range of values', 300, 1000)
 #st.write('Values:', values)
 
-profiler_output = profiler.output_text(unicode=True, color=True)
-ansi_converter = Ansi2HTMLConverter()
-html_output = ansi_converter.convert(profiler_output)
-components.html(html_output, height=values, scrolling=True)
+#profiler_output = profiler.output_text(unicode=True, color=True)
+#ansi_converter = Ansi2HTMLConverter()
+#html_output = ansi_converter.convert(profiler_output)
+#components.html(html_output, height=values, scrolling=True)
 
