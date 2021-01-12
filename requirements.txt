@@ -1,4 +1,5 @@
 streamlit
+pyinstrument
 requests
 requests-html
 nltk==3.5
