@@ -1,20 +1,34 @@
-
 import os
 import base64
 
 import nltk
-#nltk.download('popular')
-nltk.download('punkt')
+nltk.download('popular')
+
+import pandas as pd
+import streamlit as st
+#from pyinstrument import Profiler
+#from ansi2html import Ansi2HTMLConverter
+#import streamlit.components.v1 as components
+
 
 import streamlit as st
 from pipelines import pipeline
 from requests_html import HTMLSession
 session = HTMLSession()
 
-st.beta_set_page_config(
-page_title="What The Faq?")
 
-#page_icon="🧊"
+#profiler = Profiler()
+#profiler.start()
+
+####################################################################################
+
+# ... your code ...
+
+
+st.beta_set_page_config(
+page_title="Ex-stream-ly Cool App",
+page_icon="🧊")
+
 
 #region Layout size ####################################################################################
 
@@ -42,6 +56,7 @@ c30, c31, c32 = st.beta_columns(3)
 
 with c30:
   st.image('WhatTheFaq.png', width = 420 )
+
 
 with c32:
   #st.image('streamEASmaller2.jpg', width = 275 )
@@ -71,7 +86,7 @@ st.markdown('## **① Paste a URL **') #########
 URLBox = st.text_input('')
 
 if not URLBox:
-  st.success('Paste a URL in the field above ☝️')
+  st.warning('Please add a valid URL ☝️')
   st.stop()
 
 selector = "p"
@@ -86,10 +101,6 @@ except:
 
 lenText = len(text)
 
-if lenText < 200:
-  st.warning('⚠️ The extracted text is ' + str(len(text)) + ' characters long. Most of the content is probably rendered client-side, which is not supported at the moment.')
-  st.stop()
-	
 if lenText > 30000:
   st.warning('⚠️ The extracted text is ' + str(len(text)) + " characters, that's " + str(len(text)- 30000) + " characters above the 30K limit! Stay tuned as we may increase that limit soon! 😉")
   st.stop()
@@ -99,12 +110,16 @@ else:
     st.warning("Extracted text is " + str(len(text)) + " characters long")
     st.write(text)
 
+
 ####################################
 
 nlp = pipeline("multitask-qa-qg")
 faqs = nlp(text)
 
 ####################################
+faqs
+
+st.stop()
 
 c13, c14 = st.beta_columns(2)
 
@@ -231,6 +246,10 @@ with c14:
 #endregion  ###################################################################################
 
 #region column 1 ###################################################################################
+
+
+
+st.stop()
 
 c15, c16 = st.beta_columns(2)
 
@@ -620,4 +639,13 @@ b642 = base64.b64encode(csvLeft.encode()).decode()
 href = f'<a href="data:file/csvLeft;base64,{b642}" download="SelectedFAQs.csv">** ⯈ Download your Q&As**</a>'
 st.markdown(href, unsafe_allow_html=True)
 
+profiler.stop()
+
+values = st.slider('Select a range of values', 300, 1000)
+#st.write('Values:', values)
+
+#profiler_output = profiler.output_text(unicode=True, color=True)
+#ansi_converter = Ansi2HTMLConverter()
+#html_output = ansi_converter.convert(profiler_output)
+#components.html(html_output, height=values, scrolling=True)
 

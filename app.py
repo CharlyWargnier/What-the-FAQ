@@ -6,9 +6,9 @@ nltk.download('popular')
 
 import pandas as pd
 import streamlit as st
-#from pyinstrument import Profiler
-#from ansi2html import Ansi2HTMLConverter
-#import streamlit.components.v1 as components
+from pyinstrument import Profiler
+from ansi2html import Ansi2HTMLConverter
+import streamlit.components.v1 as components
 
 
 import streamlit as st
@@ -17,8 +17,8 @@ from requests_html import HTMLSession
 session = HTMLSession()
 
 
-#profiler = Profiler()
-#profiler.start()
+profiler = Profiler()
+profiler.start()
 
 ####################################################################################
 
@@ -119,8 +119,55 @@ faqs = nlp(text)
 ####################################
 faqs
 
+c19, c20 = st.beta_columns(2)
+
+a_list = []
+
+with c19:
+    filtered_faqs = [item for item in faqs if st.checkbox(item["question"], key = 1)]
+
+with c20:
+    for d in faqs:
+       st.write(d['answer'])
+
+df = pd.DataFrame(filtered_faqs) 
+df
+
+###################
+
+import streamlit as st
+import pandas as pd
+
+
+st.header('FAQs')
+
+faqs = [
+{ "question": "How old is Tom?", "answer": "10 year old" },
+{ "question": "How old is Mark?", "answer": "5 year old" },
+{ "question": "How old is Pam?", "answer": "7 year old" },
+{ "question": "How old is Dick?", "answer": "12 year old" }
+]
+
+faqs
+
+c19, c20 = st.beta_columns(2)
+
+a_list = []
+
+with c19:
+    filtered_faqs = [item for item in faqs if st.checkbox(item["question"], key = 1)]
+
+with c20:
+    for d in faqs:
+       st.write(d['answer'])
+
+df = pd.DataFrame(filtered_faqs) 
+df
 
 st.stop()
+
+###################
+
 
 c13, c14 = st.beta_columns(2)
 
@@ -645,8 +692,8 @@ profiler.stop()
 values = st.slider('Select a range of values', 300, 1000)
 #st.write('Values:', values)
 
-#profiler_output = profiler.output_text(unicode=True, color=True)
-#ansi_converter = Ansi2HTMLConverter()
-#html_output = ansi_converter.convert(profiler_output)
-#components.html(html_output, height=values, scrolling=True)
+profiler_output = profiler.output_text(unicode=True, color=True)
+ansi_converter = Ansi2HTMLConverter()
+html_output = ansi_converter.convert(profiler_output)
+components.html(html_output, height=values, scrolling=True)
 
