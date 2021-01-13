@@ -1,21 +1,16 @@
 #import os
 import base64
-
 import nltk
 nltk.download('popular')
 
 import pandas as pd
 import streamlit as st
-#from pyinstrument import Profiler
-#from ansi2html import Ansi2HTMLConverter
-#import streamlit.components.v1 as components
 
-import streamlit as st
 from pipelines import pipeline
 from requests_html import HTMLSession
 session = HTMLSession()
 
-st.set_page_config(
+st.beta_set_page_config(
 #page_title="Ex-stream-ly Cool App",
 page_icon="😊")
 
@@ -42,26 +37,6 @@ _max_width_()
 
 #region Top area ############################################################
 
-import streamlit as st
-
-#def text_field(label, columns=None, **input_params):
-#    c1, c2 = st.beta_columns(columns or [1, 4])
-#
-#    # Display field name with some alignment
-#    c1.markdown("##")
-#    c1.markdown(label)
-#
-#    # Sets a default key parameter to avoid duplicate key errors
-#    input_params.setdefault("key", label)
-#
-#    # Forward text input parameters
-#    return c2.text_input("", **input_params)
-#
-#
-#username = text_field("Username")
-#password = text_field("Password", type="password")  # Notice that you can forward text_input parameters naturally
-
-
 c30, c31, c32 = st.beta_columns(3)
 
 with c30:
@@ -69,8 +44,6 @@ with c30:
 
 
 with c32:
-  #st.image('streamEASmaller2.jpg', width = 275 )
-  #st.markdown("---")
   st.header('')
   st.header('')
   st.markdown('###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://twitter.com/DataChaz) &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)')
@@ -105,18 +78,28 @@ try:
   with session.get(URLBox) as r:
     paragraph = r.html.find(selector, first=False)
     text = " ".join([ p.text for p in paragraph])
+
 except:
   st.error('🚫 Invalid URL!')
   st.stop()
 
-lenText = len(text)
+#text
+#st.write(type(text))
 
-if lenText > 30000:
-  st.warning('⚠️ The extracted text is ' + str(len(text)) + " characters, that's " + str(len(text)- 30000) + " characters above the 30K limit! Stay tuned as we may increase that limit soon! 😉")
-  st.stop()
-  
-else:
-  with st.beta_expander("Toggle to check extracted text ⯈", expanded=False):
+text2 = (text[:3000] + '..') if len(text) > 3000 else text
+text2
+lenText2 = len(text2)
+lenText2
+
+#st.stop()
+
+#if lenText > 30000:
+#  st.warning('⚠️ The extracted text is ' + str(len(text)) + " characters, that's " + str(len(text)- 30000) + " #characters above the 30K limit! Stay tuned as we may increase that limit soon! 😉")
+#  st.stop()
+#else:
+
+
+with st.beta_expander("Toggle to check extracted text ⯈", expanded=False):
     st.warning("Extracted text is " + str(len(text)) + " characters long")
     st.write(text)
 
