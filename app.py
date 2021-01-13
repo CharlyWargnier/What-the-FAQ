@@ -15,7 +15,7 @@ from pipelines import pipeline
 from requests_html import HTMLSession
 session = HTMLSession()
 
-st.beta_set_page_config(
+st.set_page_config(
 #page_title="Ex-stream-ly Cool App",
 page_icon="😊")
 
