@@ -14,11 +14,10 @@ st.beta_set_page_config(
 #page_title="Ex-stream-ly Cool App",
 page_icon="😊")
 
-
 #region Layout size ####################################################################################
 
 def _max_width_():
-    max_width_str = f"max-width: 1700;"
+    max_width_str = f"max-width: 1700px;"
     #max_width_str = f"max-width: 1550px;"
     st.markdown(
         f"""
