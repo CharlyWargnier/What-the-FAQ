@@ -1,4 +1,4 @@
-import os
+#import os
 import base64
 
 import nltk
@@ -6,9 +6,9 @@ nltk.download('popular')
 
 import pandas as pd
 import streamlit as st
-from pyinstrument import Profiler
-from ansi2html import Ansi2HTMLConverter
-import streamlit.components.v1 as components
+#from pyinstrument import Profiler
+#from ansi2html import Ansi2HTMLConverter
+#import streamlit.components.v1 as components
 
 import streamlit as st
 from pipelines import pipeline
