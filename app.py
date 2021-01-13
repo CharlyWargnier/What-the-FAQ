@@ -10,7 +10,7 @@ from pipelines import pipeline
 from requests_html import HTMLSession
 session = HTMLSession()
 
-st.beta_set_page_config(
+st.set_page_config(
 #page_title="Ex-stream-ly Cool App",
 page_icon="😊")
 
@@ -85,7 +85,7 @@ except:
 #text
 #st.write(type(text))
 
-text2 = (text[:3000] + '..') if len(text) > 3000 else text
+text2 = (text[:1000] + '..') if len(text) > 1000 else text
 text2
 lenText2 = len(text2)
 lenText2
