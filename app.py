@@ -100,13 +100,13 @@ lenText2
 
 with st.beta_expander("Toggle to check extracted text ⯈", expanded=False):
     st.warning("Extracted text is " + str(len(text)) + " characters long")
-    st.write(text)
+    st.write(text2)
 
 
 ####################################
 
 nlp = pipeline("multitask-qa-qg")
-faqs = nlp(text)
+faqs = nlp(text2)
 
 ####################################
 #faqs
