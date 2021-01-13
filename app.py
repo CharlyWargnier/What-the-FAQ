@@ -2,33 +2,22 @@ import os
 import base64
 
 import nltk
-nltk.download('punkt')
+nltk.download('popular')
 
 import pandas as pd
 import streamlit as st
-#from pyinstrument import Profiler
-#from ansi2html import Ansi2HTMLConverter
+from pyinstrument import Profiler
+from ansi2html import Ansi2HTMLConverter
 import streamlit.components.v1 as components
-
 
 import streamlit as st
 from pipelines import pipeline
 from requests_html import HTMLSession
 session = HTMLSession()
 
-
-#profiler = Profiler()
-#profiler.start()
-
-
-####################################################################################
-
-# ... your code ...
-
-
 st.beta_set_page_config(
-page_title="Ex-stream-ly Cool App",
-page_icon="🧊")
+#page_title="Ex-stream-ly Cool App",
+page_icon="😊")
 
 
 #region Layout size ####################################################################################
@@ -52,6 +41,26 @@ _max_width_()
 #endregion Layout size ####################################################################################
 
 #region Top area ############################################################
+
+import streamlit as st
+
+#def text_field(label, columns=None, **input_params):
+#    c1, c2 = st.beta_columns(columns or [1, 4])
+#
+#    # Display field name with some alignment
+#    c1.markdown("##")
+#    c1.markdown(label)
+#
+#    # Sets a default key parameter to avoid duplicate key errors
+#    input_params.setdefault("key", label)
+#
+#    # Forward text input parameters
+#    return c2.text_input("", **input_params)
+#
+#
+#username = text_field("Username")
+#password = text_field("Password", type="password")  # Notice that you can forward text_input parameters naturally
+
 
 c30, c31, c32 = st.beta_columns(3)
 
@@ -82,7 +91,7 @@ with st.beta_expander("ℹ️ - About this app ", expanded=False):
 
 	    """)
       
-st.markdown('## **① Paste a URL **') #########
+st.markdown('## **① Paste a URL**') #########
 
 URLBox = st.text_input('')
 
@@ -118,21 +127,55 @@ nlp = pipeline("multitask-qa-qg")
 faqs = nlp(text)
 
 ####################################
-faqs
+#faqs
 
-c19, c20 = st.beta_columns(2)
+from collections import Counter
+
+k = [x['answer'] for x in faqs]
+
+new_faqs=[]
+
+for i in Counter(k):
+    all = [x for x in faqs if x['answer']==i]
+    new_faqs.append(max(all, key=lambda x: x['answer']))
+
+#new_faqs
+
+c19, c20 = st.beta_columns([3, 1])
 
 a_list = []
 
 with c19:
-    filtered_faqs = [item for item in faqs if st.checkbox(item["question"], key = 1)]
+    #c1, c2 = st.beta_columns(columns or [1, 4])
+    filtered_Qs = [item for item in new_faqs if st.checkbox(item["question"], key = 100)]
+    #st.markdown("######")
 
 with c20:
-    for d in faqs:
-       st.write(d['answer'])
+    #c1, c2 = st.beta_columns(columns or [1, 4])
+    filtered_As = [itemw for itemw in new_faqs if st.checkbox(itemw["answer"], key = 1000)]
+    #st.markdown("######")
 
-df = pd.DataFrame(filtered_faqs) 
-df
+#filtered_Qs
+#filtered_As
+
+#with c22:
+#    for d in faqs:
+#        a = st.checkbox(d['answer'])
+#        #st.text("")
+#        #st.markdown("######")
+#        if a == True:
+#            a_list.append(['answer'], key = 2) 
+#
+#with c22:
+#    for d in faqs:
+#        st.write(d['answer'])
+#        #st.markdown("######")
+
+df = pd.DataFrame(filtered_Qs) 
+#df
+
+df2 = pd.DataFrame(filtered_As) 
+#df2
 
 ###################
 
@@ -140,29 +183,52 @@ import streamlit as st
 import pandas as pd
 
 
-st.header('FAQs')
+#st.header('FAQs')
+#
+#faqs = [
+#{ "question": "How old is Tom?", "answer": "10 year old" },
+#{ "question": "How old is Mark?", "answer": "5 year old" },
+#{ "question": "How old is Pam?", "answer": "7 year old" },
+#{ "question": "How old is Dick?", "answer": "12 year old" }
+#]
+#
+#faqs
+#
+#c19, c20 = st.beta_columns(2)
+#
+#a_list = []
+#
+#with c19:
+#    filtered_faqs = [item for item in faqs if st.checkbox(item["question"], key = 1)]
+#
+#with c20:
+#    for d in faqs:
+#       st.write(d['answer'])
+#
+#df = pd.DataFrame(filtered_faqs) 
+#df
 
-faqs = [
-{ "question": "How old is Tom?", "answer": "10 year old" },
-{ "question": "How old is Mark?", "answer": "5 year old" },
-{ "question": "How old is Pam?", "answer": "7 year old" },
-{ "question": "How old is Dick?", "answer": "12 year old" }
-]
+frames = [df, df2]
+result = pd.concat(frames)
+result = result.drop_duplicates(subset=['answer', 'question'])
 
-faqs
 
-c19, c20 = st.beta_columns(2)
+#st.stop()
 
-a_list = []
+###################
 
-with c19:
-    filtered_faqs = [item for item in faqs if st.checkbox(item["question"], key = 1)]
+st.markdown('## **③ Check your selection **')
+st.table(result)
 
-with c20:
-    for d in faqs:
-       st.write(d['answer'])
+#######################################################
 
-df = pd.DataFrame(filtered_faqs) 
-df
+st.markdown('## **🎁 Download your selected Q/A pairs! **') ### https://docs.
+st.header("")
 
-st.stop()
+csvLeft = result.to_csv()
+b642 = base64.b64encode(csvLeft.encode()).decode()
+href = f'<a href="data:file/csvLeft;base64,{b642}" download="SelectedFAQs.csv">** ⯈ Download your Q&As**</a>'
+st.markdown(href, unsafe_allow_html=True)
+
+
+
