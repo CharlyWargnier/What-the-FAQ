@@ -1,4 +1,4 @@
-streamlit
+streamlit==0.7
 requests
 requests-html
 nltk==3.5
