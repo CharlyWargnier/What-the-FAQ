@@ -1,9 +1,8 @@
 streamlit
-pyinstrument
 requests
 requests-html
 nltk==3.5
-transformers==3.1.0
+transformers
 
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.7.1+cpu
