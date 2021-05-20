@@ -4,7 +4,7 @@ requests-html
 nltk==3.5
 
 sentencepiece
-transformers==3.5.1
+transformers==3.4.0
 
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.7.1+cpu
