@@ -3,5 +3,8 @@ requests
 requests-html
 nltk==3.5
 
-pip install transformers[torch]
-sentencepiece
+transformers==3.5.1
+
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.7.1+cpu
+
