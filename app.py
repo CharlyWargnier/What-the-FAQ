@@ -93,7 +93,7 @@ except:
 # text
 # st.write(type(text))
 
-text2 = (text[:1000] + "..") if len(text) > 1000 else text
+text2 = (text[:5000] + "..") if len(text) > 5000 else text
 text2
 lenText2 = len(text2)
 lenText2
