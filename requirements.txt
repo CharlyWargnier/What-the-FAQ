@@ -2,14 +2,7 @@ streamlit
 requests
 requests-html
 nltk==3.5
-
-sentencepiece
-transformers==3.4.0
+transformers==3.1.0
 
 --find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.7.1+cpu
-
-
-
-
-
+torch==1.6.0+cpu
