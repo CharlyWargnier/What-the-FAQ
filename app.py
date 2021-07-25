@@ -42,10 +42,10 @@ _max_width_()
 
 # region Top area ############################################################
 
-c30, c31, c32 = st.beta_columns([2.5, 2, 3])
+c30, c32 = st.beta_columns([1.9, 1])
 
 with c30:
-    st.image("WhatTheFaq.png", width=520)
+    st.image("WhatTheFaq.png", width=480)
 
     # st.image("logo.png", width=400)
     st.header("")
@@ -54,14 +54,35 @@ with c32:
     st.header("")
     # st.header("")
     # st.header("")
-    st.text("")
-    st.text("")
+    # st.text("")
+    # st.text("")
     st.text("")
     st.header("")
     st.markdown(
-        "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://www.charlywargnier.com/) &nbsp | &nbsp [![Follow](https://img.shields.io/twitter/follow/datachaz?style=social)](https://www.twitter.com/datachaz) &nbsp | &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
+        "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://www.charlywargnier.com/) &nbsp | &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
     )
     st.text("")
+
+# c30, c32 = st.beta_columns([1.3, 1])
+#
+# with c30:
+#    st.image("WhatTheFaq.png", width=520)
+#
+#    # st.image("logo.png", width=400)
+#    st.header("")
+#
+# with c32:
+#    st.header("")
+#    # st.header("")
+#    # st.header("")
+#    # st.text("")
+#    st.text("")
+#    st.text("")
+#    st.header("")
+#    st.markdown(
+#        "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz]#(https://www.charlywargnier.com/) &nbsp | &nbsp [![Follow](https://img.shields.io/twitter/follow/datachaz?style=social)](https://www.#twitter.com/datachaz) &nbsp | &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
+#    )
+#    st.text("")
 
 ###########################
 
