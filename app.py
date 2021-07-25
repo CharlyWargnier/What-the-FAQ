@@ -287,10 +287,9 @@ try:
         st.table(result)
 
 except Exception as e:
-    # st.write("aaaaaaaaaaaaaaaaaa")
     st.warning(
         f"""
-    🔮 **Snap!** Seems like there's an issue with your URL, please try another one! If the issue persists, [reach me out on Gitter!](https://gitter.im/DataChaz/what-the-FAQ).
+    🔮 **Snap!** Seems like there's an issue with that URL, please try another one. If the issue persists, [reach me out on Gitter!](https://gitter.im/DataChaz/what-the-FAQ)
     """
     )
     st.stop()
