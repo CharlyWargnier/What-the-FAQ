@@ -148,8 +148,8 @@ with c4:
 
     with st.form("Form1"):
 
-        URLBox = st.text_input("", help="e.g. 'https://www.google.com/'")
-        cap = 4000
+        URLBox = st.text_input("", help="e.g. 'https://www.tatielou.co.uk/'")
+        cap = 1000
 
         submitted1 = st.form_submit_button("Get your Q&A pairs! ✨")
 
@@ -186,7 +186,7 @@ lenText = len(text2)
 if lenText > cap:
     # st.warning('⚠️ The extracted text is ' + str(len(text)) + " characters, that's " + str(len(text)- 30000) + " #characters above the 30K limit! Stay tuned as we may increase that limit soon! 😉")
     c.warning(
-        "⚠️ As we're still in early Beta, we will build the Q&A pairs based on the first 4,000 characters. Stay tuned as we may increase that limit soon! 😉"
+        "⚠️ As we're still in early Beta, we will build the Q&A pairs based on the first 1,000 characters. Stay tuned as we may increase that limit soon! 😉"
     )
     pass
     # st.stop()
