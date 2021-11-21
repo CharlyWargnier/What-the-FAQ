@@ -12,12 +12,10 @@ nltk.download("popular")
 
 # For Download button (Johannes)
 from functionforDownloadButtons import download_button
-
 from requests_html import HTMLSession
 
 session = HTMLSession()
 
-# st.set_page_config(page_title="WhatTheFAQ?", page_icon="❓")
 st.set_page_config(page_title="WhatTheFAQ?", page_icon="🎈")
 
 
@@ -46,82 +44,16 @@ c30, c32 = st.beta_columns([1.9, 1])
 
 with c30:
     st.image("WhatTheFaq.png", width=480)
-
-    # st.image("logo.png", width=400)
     st.header("")
 
 with c32:
     st.header("")
-    # st.header("")
-    # st.header("")
-    # st.text("")
-    # st.text("")
     st.text("")
     st.header("")
     st.markdown(
         "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://www.charlywargnier.com/) &nbsp | &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
     )
     st.text("")
-
-# c30, c32 = st.beta_columns([1.3, 1])
-#
-# with c30:
-#    st.image("WhatTheFaq.png", width=520)
-#
-#    # st.image("logo.png", width=400)
-#    st.header("")
-#
-# with c32:
-#    st.header("")
-#    # st.header("")
-#    # st.header("")
-#    # st.text("")
-#    st.text("")
-#    st.text("")
-#    st.header("")
-#    st.markdown(
-#        "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz]#(https://www.charlywargnier.com/) &nbsp | &nbsp [![Follow](https://img.shields.io/twitter/follow/datachaz?style=social)](https://www.#twitter.com/datachaz) &nbsp | &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
-#    )
-#    st.text("")
-
-###########################
-
-# c30, c31, c32, c33 = st.beta_column
-# with c30:
-#    st.image("WhatTheFaq.png", width=520)
-#
-# st.header("")
-#
-# with c33:
-#    st.header("")
-#    st.header("")
-#    st.subheader("")
-#    st.markdown(
-#        "###### Made in [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://twitter.com/DataChaz) &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
-#    )
-#
-# with st.beta_expander("ℹ️ - To-do ", expanded=False):
-#    st.write(
-#        """
-#
-# -   Do more tests
-#
-# 	    """
-#    )
-#
-# with st.beta_expander("ℹ️ - Done ", expanded=False):
-#    st.write(
-#        """
-#
-# -   Change streamlit logo + add title
-# -   Change column order in dataframe
-# -   Fix - Invalid URL! Please ensure you blah, blah
-# -   Add button from Johannes
-# -   Un-hash set_page_config to display favicon
-# -   Ensure 'Made in Streamlit is realigned
-#
-# 	    """
-#    )
 
 with st.beta_expander("ℹ️ - About this app ", expanded=False):
     st.write(
@@ -156,7 +88,6 @@ with c4:
     c = st.beta_container()
 
     if not submitted1 and not URLBox:
-        # st.warning("Please add a valid URL ☝️")
         st.stop()
 
     if submitted1 and not URLBox:
@@ -176,10 +107,6 @@ except:
     )
     st.stop()
 
-
-# text2 = (text[:2000] + "..") if len(text) > 2000 else text
-# lenText = len(text2)
-
 text2 = (text[:cap] + "..") if len(text) > cap else text
 lenText = len(text2)
 
@@ -189,20 +116,12 @@ if lenText > cap:
         "⚠️ As we're still in early Beta, we will build the Q&A pairs based on the first 1,000 characters. Stay tuned as we may increase that limit soon! 😉"
     )
     pass
-    # st.stop()
 else:
     pass
 
-# ↕️ Toggle activation details
-
 with st.beta_expander(" ↕️ Toggle to check extracted text ", expanded=False):
     st.header("")
-
-    # if lenText > 2000:
     a = "The full text extraction is " + str(len(text)) + " characters long"
-    # else:
-    #    a = "The extracted text is " + str(len(text)) + " characters long. As we're still in BETA, we will build the Q&A pairs based on the first 2,000 characters"
-
     st.header("")
     st.write(text2)
     st.header("")
@@ -249,23 +168,9 @@ try:
 
     df = pd.DataFrame(filtered_Qs)
     df2 = pd.DataFrame(filtered_As)
-
-    # cols
-    # Out[13]: ['mean', 0L, 1L, 2L, 3L, 4L]
-
     frames = [df, df2]
     result = pd.concat(frames)
-    # result = result.drop_duplicates(subset=["question", "answer"])
     result = result.drop_duplicates(subset=["question", "answer"])
-    # cols = ["question", "answer"]
-    # result.columns
-
-    # df = df[["C", "A", "B"]]
-    # result = result[cols]
-
-    # df = df[["C", "A", "B"]]
-
-    # result = result["question", "answer"]
     result.index += 1
 
     st.header("")
